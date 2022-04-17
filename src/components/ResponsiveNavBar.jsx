@@ -31,10 +31,15 @@ const ResponsiveNavBar = () => {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <Toolbar sx={{ paddingX: 5, paddingY: 3 }}>
-          <img src={logo} alt='Level Up Logo' width='100%' height='100%' />
+        <Toolbar
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <img src={logo} alt='Level Up Logo' width='85%' height='auto' />
         </Toolbar>
-        <Divider sx={{ borderColor: 'rgba(255,255,255,0.15)', marginX: 2 }} />
+        <Divider sx={{ borderColor: 'rgba(255,255,255,0.15)', margin: 2 }} />
         <List>
           {options.map((option, i) => {
             const { platform, icon } = option
