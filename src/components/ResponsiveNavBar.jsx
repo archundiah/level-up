@@ -12,7 +12,6 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Toolbar from '@mui/material/Toolbar'
 
-import logo from '../assets/logo.png'
 import { options } from '../helpers/product-options'
 
 const ResponsiveNavBar = () => {
@@ -37,7 +36,12 @@ const ResponsiveNavBar = () => {
             justifyContent: 'center',
           }}
         >
-          <img src={logo} alt='Level Up Logo' width='85%' height='auto' />
+          <img
+            src='./assets/logo.png'
+            alt='Level Up Logo'
+            width='85%'
+            height='auto'
+          />
         </Toolbar>
         <Divider sx={{ borderColor: 'rgba(255,255,255,0.15)', margin: 2 }} />
         <List>
