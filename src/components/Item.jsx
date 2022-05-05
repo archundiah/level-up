@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
-const Item = ({ title, platform, price, img }) => {
+const Item = ({ id, title, platform, price, img }) => {
   return (
     <Card
       sx={{
@@ -16,12 +17,14 @@ const Item = ({ title, platform, price, img }) => {
     >
       <CardContent>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <img
-            src={`/assets/${img}`}
-            alt='Game caratule'
-            width='auto'
-            height='200px'
-          />
+          <Link to={`/item/${id}`}>
+            <img
+              src={`/assets/${img}`}
+              alt='Game caratule'
+              width='auto'
+              height='200px'
+            />
+          </Link>
         </Box>
         <Box
           sx={{
