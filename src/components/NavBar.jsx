@@ -63,7 +63,6 @@ const NavBar = () => {
                       sx={{
                         textDecoration: 'none',
                         color: '#fff',
-                        '.active &': { color: 'red' },
                       }}
                     />
                   )

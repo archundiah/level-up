@@ -8,10 +8,16 @@ import ItemList from './ItemList'
 const ItemListContainer = () => {
   const { category } = useParams()
   const [games, setGames] = useState([])
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     const getGames = new Promise((resolve, reject) => {
+      setLoading(true)
       setTimeout(() => {
-        resolve(temporalGames)
+        const filteredGames = temporalGames.filter(
+          (game) => game.platform.toLowerCase() === category
+        )
+        setLoading(false)
+        resolve(filteredGames)
       }, 2000)
     })
 
@@ -35,7 +41,11 @@ const ItemListContainer = () => {
       >
         {category.toUpperCase()}
       </Typography>
-      <ItemList games={games} />
+      {loading ? (
+        <Typography>Loading games...</Typography>
+      ) : (
+        <ItemList games={games} />
+      )}
     </>
   )
 }

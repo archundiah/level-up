@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Typography } from '@mui/material'
 
 import { temporalGames } from '../helpers/games'
+import ItemDetail from './ItemDetail'
 
 const ItemDetailContainer = () => {
   const { gameId } = useParams()
@@ -28,6 +29,7 @@ const ItemDetailContainer = () => {
   return (
     <>
       <Typography
+        component={'h6'}
         sx={{
           fontSize: '1.5rem',
           fontWeight: 'bold',
@@ -35,7 +37,7 @@ const ItemDetailContainer = () => {
           marginBottom: '2rem',
         }}
       >
-        {game.title}
+        <ItemDetail game={game} />
       </Typography>
     </>
   )
