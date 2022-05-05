@@ -22,7 +22,7 @@ const ItemDetailContainer = () => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(temporalGames.find((game) => game.id === gameId))
-      }, 1000)
+      }, 2000)
     })
   }
 
