@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Typography } from '@mui/material'
+import { useParams } from 'react-router-dom'
 import { temporalGames } from '../helpers/games'
 
 import ItemList from './ItemList'
 
-const ItemListContainer = ({ message }) => {
+const ItemListContainer = () => {
+  const { category } = useParams()
   const [games, setGames] = useState([])
   useEffect(() => {
     const getGames = new Promise((resolve, reject) => {
@@ -20,7 +22,7 @@ const ItemListContainer = ({ message }) => {
       .catch((error) => {
         console.log('Ha ocurrido un error: ', error)
       })
-  }, [])
+  }, [category])
   return (
     <>
       <Typography
@@ -31,7 +33,7 @@ const ItemListContainer = ({ message }) => {
           marginBottom: '2rem',
         }}
       >
-        {message}
+        {category.toUpperCase()}
       </Typography>
       <ItemList games={games} />
     </>

@@ -5,31 +5,31 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports'
 import VideogameAssetIcon from '@mui/icons-material/VideogameAsset'
 
 export const options = [
-    {
-        platform: 'PS5',
-        icon: <GamepadIcon />,
-        path: '/ps5'
-    },
-    {
-        platform: 'Xbox',
-        icon: <SportsEsportsIcon />,
-        path: '/xbox'
+  {
+    platform: 'PS5',
+    icon: <GamepadIcon />,
+    path: '/ps5'
+  },
+  {
+    platform: 'Xbox One',
+    icon: <SportsEsportsIcon />,
+    path: '/xbox'
 
-    },
-    {
-        platform: 'Switch',
-        icon: <VideogameAssetIcon />,
-        path: '/switch'
+  },
+  {
+    platform: 'Switch',
+    icon: <VideogameAssetIcon />,
+    path: '/switch'
 
-    },
-    {
-        platform: 'PC',
-        icon: <DesktopWindowsIcon />,
-        path: '/pc'
+  },
+  {
+    platform: 'PC',
+    icon: <DesktopWindowsIcon />,
+    path: '/pc'
 
-    },
-    {
-        platform: 'About Us',
-        icon: <InfoIcon />,
-        path: '/about'
-    }]
+  },
+  {
+    platform: 'About Us',
+    icon: <InfoIcon />,
+    path: '/about'
+  }]

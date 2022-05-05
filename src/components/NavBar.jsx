@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import { Link } from 'react-router-dom'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Tab from '@mui/material/Tab'
@@ -29,31 +29,44 @@ const NavBar = () => {
         sx={{
           position: 'fixed',
           background: '#312f33',
-          color: 'white',
         }}
       >
         <Toolbar>
           {isMatch ? (
             <>
               <ResponsiveNavBar />
-              <Typography
-                variant='h6'
-                sx={{ textColor: 'inherit', marginLeft: 'auto' }}
-              >
+              <Typography variant='h6' sx={{ marginLeft: 'auto' }}>
                 Level Up!
               </Typography>
             </>
           ) : (
             <>
               <Tabs
-                textColor='inherit'
-                indicatorColor='secondary'
+                textColor='secondary'
                 value={value}
                 onChange={(e, value) => setValue(value)}
+                TabIndicatorProps={{
+                  style: { background: '#fff' },
+                }}
               >
-                {options.map((option, i) => {
-                  const { platform } = option
-                  return <StyledTab key={i} label={platform} />
+                {options.map((option, index) => {
+                  const { platform, path } = option
+                  return (
+                    <StyledTab
+                      key={index}
+                      classes={{
+                        label: { color: 'red' },
+                      }}
+                      label={platform}
+                      component={Link}
+                      to={path}
+                      sx={{
+                        textDecoration: 'none',
+                        color: '#fff',
+                        '.active &': { color: 'red' },
+                      }}
+                    />
+                  )
                 })}
               </Tabs>
             </>
