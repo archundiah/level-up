@@ -8,6 +8,7 @@ import About from './components/About'
 
 import NavBar from './components/NavBar'
 import NotFound from './components/NotFound'
+import Cart from './components/Cart'
 
 let theme = createTheme({
   palette: {
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/:category" element={<ItemListContainer />} />
             <Route path="/item/:gameId" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </Box>
