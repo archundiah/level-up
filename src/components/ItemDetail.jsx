@@ -1,64 +1,101 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Box'
 
+import ItemCounter from './ItemCounter'
 import { useSnackbar } from '../context/SnackbarContext'
 import { useCart } from '../context/CartContext'
 
 const ItemDetail = ({ game }) => {
+  const [quantity, setQuantity] = useState(1)
   const navigate = useNavigate()
   const { showSnackbar } = useSnackbar()
   const { addToCart, cart } = useCart()
+  const handleAddQuantity = () => {
+    setQuantity((quantity) => quantity + 1)
+  }
+
+  const handleSubstractQuantity = () => {
+    setQuantity((quantity) => (quantity - 1 > 0 ? quantity - 1 : 0))
+  }
   return (
-    <Box sx={{ marginTop: '6rem' }}>
-      <Typography variant='body2' paddingBottom={15}>
+    <Box sx={{ marginTop: '4rem' }}>
+      <Typography variant='body2' paddingBottom={5}>
         {game.title} - {game.price}
       </Typography>
 
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Box>
         <img
           src={`/assets/${game.img}`}
           alt={game.title}
           width='auto'
           height='250px'
         />
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            textAlign: 'center',
-            alignItems: 'center',
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          textAlign: 'center',
+          marginBottom: '2rem',
+        }}
+      >
+        {game.description}
+      </Box>
+      <Button
+        variant='contained'
+        color='secondary'
+        sx={{ width: '20%', margin: '1rem' }}
+        onClick={() => {
+          navigate(`/${game.platform}`.toLowerCase())
+        }}
+      >
+        Regresar
+      </Button>
+      <Button
+        onClick={handleSubstractQuantity}
+        sx={{ display: 'inline-block', marginRight: '0.5rem' }}
+        variant='contained'
+      >
+        &lt;
+      </Button>
+      <ItemCounter value={quantity} />
+      <Button
+        onClick={handleAddQuantity}
+        sx={{ display: 'inline-block', marginLeft: '0.5rem' }}
+        variant='contained'
+      >
+        &gt;
+      </Button>
+      <Button
+        type='submit'
+        variant='contained'
+        color='primary'
+        sx={{ width: '20%', margin: '1rem' }}
+        onClick={() => {
+          addToCart(game, quantity)
+          showSnackbar('Added to cart', 'success')
+        }}
+      >
+        Agregar al Carrito
+      </Button>
+
+      {cart.length > 0 && (
+        <Button
+          variant='outlined'
+          color='primary'
+          sx={{ display: 'block', width: '20%', margin: '1rem auto' }}
+          onClick={() => {
+            navigate(`/cart`)
           }}
         >
-          {game.description}
-          <Button
-            type='submit'
-            variant='contained'
-            color='primary'
-            sx={{ width: '30%', margin: '1rem' }}
-            onClick={() => {
-              addToCart(game)
-              showSnackbar('Added to cart', 'success')
-            }}
-          >
-            Comprar
-          </Button>
-          <Button
-            type='submit'
-            variant='contained'
-            color='secondary'
-            sx={{ width: '30%', margin: '1rem' }}
-            onClick={() => {
-              navigate(`/${game.platform}`.toLowerCase())
-            }}
-          >
-            Regresar
-          </Button>
-        </Box>
-      </Box>
+          Terminar mi compra
+        </Button>
+      )}
     </Box>
   )
 }

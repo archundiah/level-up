@@ -13,9 +13,9 @@ export function useCart() {
 }
 
 export function CartContextProvider({ children }) {
-  const [cart, setCart] = useState([{}])
+  const [cart, setCart] = useState([])
 
-  const addToCart = (game) => {
+  const addToCart = (game, quantity) => {
     if (isInCart(game)) {
       const newCart = cart.map((item) =>
         item.title === game.title
@@ -25,7 +25,7 @@ export function CartContextProvider({ children }) {
       setCart(newCart)
       return
     }
-    setCart([...cart, { title: game.title, quantity: 1 }])
+    setCart([...cart, { title: game.title, quantity: quantity }])
   }
 
   const removeFromCart = (game) => {
