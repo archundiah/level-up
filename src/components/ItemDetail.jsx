@@ -4,8 +4,13 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Box'
 
+import { useSnackbar } from '../context/SnackbarContext'
+import { useCart } from '../context/CartContext'
+
 const ItemDetail = ({ game }) => {
   const navigate = useNavigate()
+  const { showSnackbar } = useSnackbar()
+  const { addToCart, cart } = useCart()
   return (
     <Box sx={{ marginTop: '6rem' }}>
       <Typography variant='body2' paddingBottom={15}>
@@ -29,6 +34,18 @@ const ItemDetail = ({ game }) => {
           }}
         >
           {game.description}
+          <Button
+            type='submit'
+            variant='contained'
+            color='primary'
+            sx={{ width: '30%', margin: '1rem' }}
+            onClick={() => {
+              addToCart(game)
+              showSnackbar('Added to cart', 'success')
+            }}
+          >
+            Comprar
+          </Button>
           <Button
             type='submit'
             variant='contained'
