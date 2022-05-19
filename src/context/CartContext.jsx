@@ -19,17 +19,58 @@ export function CartContextProvider({ children }) {
     if (isInCart(game)) {
       const newCart = cart.map((item) =>
         item.title === game.title
-          ? { title: game.title, quantity: ++item.quantity }
-          : { title: item.title, quantity: item.quantity }
+          ? {
+              title: game.title,
+              price: game.price,
+              image: game.image,
+              quantity: ++item.quantity,
+            }
+          : {
+              title: item.title,
+              price: game.price,
+              image: game.image,
+              quantity: item.quantity,
+            }
       )
       setCart(newCart)
       return
     }
-    setCart([...cart, { title: game.title, quantity: quantity }])
+    setCart([
+      ...cart,
+      {
+        title: game.title,
+        price: game.price,
+        image: game.image,
+        quantity: quantity,
+      },
+    ])
   }
 
   const removeFromCart = (game) => {
-    setCart(cart.filter((item) => item.id !== game.title))
+    setCart(cart.filter((item) => item.title !== game.title))
+  }
+
+  const removeOneFromCart = (game, quantity) => {
+    if (game.quantity !== 1) {
+      const newCart = cart.map((item) =>
+        item.title === game.title
+          ? {
+              title: game.title,
+              price: game.price,
+              image: game.image,
+              quantity: --item.quantity,
+            }
+          : {
+              title: item.title,
+              price: game.price,
+              image: game.image,
+              quantity: item.quantity,
+            }
+      )
+      setCart(newCart)
+      return
+    }
+    removeFromCart(game)
   }
 
   const isInCart = (game) => {
@@ -41,7 +82,9 @@ export function CartContextProvider({ children }) {
   }
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, clearCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, clearCart, removeFromCart, removeOneFromCart }}
+    >
       {children}
     </CartContext.Provider>
   )

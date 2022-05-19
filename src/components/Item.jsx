@@ -4,7 +4,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
-const Item = ({ id, title, platform, price, img }) => {
+const Item = ({ id, title, platform, price, image }) => {
   return (
     <Card
       sx={{
@@ -19,7 +19,7 @@ const Item = ({ id, title, platform, price, img }) => {
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Link to={`/item/${id}`}>
             <img
-              src={`/assets/${img}`}
+              src={`/assets/${image}`}
               alt='Game caratule'
               width='auto'
               height='200px'

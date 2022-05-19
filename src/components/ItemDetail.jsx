@@ -29,6 +29,7 @@ const ItemDetail = ({ game }) => {
   setTimeout(() => {
     setLoading(false)
   }, 2000)
+  console.log(game)
   return (
     <>
       {loading ? (
@@ -41,12 +42,12 @@ const ItemDetail = ({ game }) => {
       ) : (
         <Box sx={{ marginTop: '4rem' }}>
           <Typography variant='body2' paddingBottom={5}>
-            {game.title} - {game.price}
+            {game.title} - ${game.price}
           </Typography>
 
           <Box>
             <img
-              src={`/assets/${game.img}`}
+              src={`/assets/${game.image}`}
               alt={game.title}
               width='auto'
               height='250px'
