@@ -11,10 +11,12 @@ import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Toolbar from '@mui/material/Toolbar'
+import { useNavigate } from 'react-router-dom'
 
 import { options } from '../helpers/product-options'
 
 const ResponsiveNavBar = () => {
+  const navigate = useNavigate()
   const [open, setOpen] = useState(false)
   return (
     <Box>
@@ -48,7 +50,13 @@ const ResponsiveNavBar = () => {
           {options.map((option, i) => {
             const { platform, icon } = option
             return (
-              <ListItemButton key={i} onClick={() => setOpen(!open)}>
+              <ListItemButton
+                key={i}
+                onClick={() => {
+                  navigate(`/${platform}`.toLowerCase())
+                  setOpen(!open)
+                }}
+              >
                 <ListItem>
                   <ListItemIcon sx={{ color: 'white' }}>{icon}</ListItemIcon>
                   <ListItemText sx={{ color: 'white' }}>
