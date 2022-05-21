@@ -6,9 +6,11 @@ import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
+import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 
 const CartItem = ({ game }) => {
+  const navigate = useNavigate()
   const { addToCart, removeOneFromCart, removeFromCart } = useCart()
 
   return (
@@ -24,7 +26,7 @@ const CartItem = ({ game }) => {
         alt='Game Screen'
         height='300'
         width='200'
-        image={`/assets/${game.image}`}
+        image={game.image}
       />
       <CardContent
         sx={{

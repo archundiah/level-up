@@ -2,29 +2,20 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Typography } from '@mui/material'
 
-import { temporalGames } from '../helpers/games'
 import ItemDetail from './ItemDetail'
+import { getGameDetail } from '../helpers/gamesFB'
 
 const ItemDetailContainer = () => {
   const { gameId } = useParams()
   const [game, setGame] = useState({})
 
   useEffect(() => {
-    ;(async () => {
-      const gameData = await getGameDetail()
-      if (gameData) {
-        setGame(gameData)
-      }
-    })()
+    const getData = async () => {
+      const game = await getGameDetail(gameId)
+      setGame(game)
+    }
+    getData()
   }, [gameId])
-
-  const getGameDetail = () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(temporalGames.find((game) => game.id === gameId))
-      }, 2000)
-    })
-  }
 
   return (
     <>

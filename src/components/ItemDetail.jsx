@@ -13,7 +13,7 @@ import { useCart } from '../context/CartContext'
 
 const ItemDetail = ({ game }) => {
   const [quantity, setQuantity] = useState(1)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { showSnackbar } = useSnackbar()
   const { addToCart, cart } = useCart()
@@ -28,8 +28,8 @@ const ItemDetail = ({ game }) => {
 
   setTimeout(() => {
     setLoading(false)
-  }, 2000)
-  console.log(game)
+  }, 1000)
+
   return (
     <>
       {loading ? (
@@ -47,7 +47,7 @@ const ItemDetail = ({ game }) => {
 
           <Box>
             <img
-              src={`/assets/${game.image}`}
+              src={game.image}
               alt={game.title}
               width='auto'
               height='250px'

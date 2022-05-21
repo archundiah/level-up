@@ -27,8 +27,8 @@ export function CartContextProvider({ children }) {
             }
           : {
               title: item.title,
-              price: game.price,
-              image: game.image,
+              price: item.price,
+              image: item.image,
               quantity: item.quantity,
             }
       )
@@ -62,8 +62,8 @@ export function CartContextProvider({ children }) {
             }
           : {
               title: item.title,
-              price: game.price,
-              image: game.image,
+              price: item.price,
+              image: item.image,
               quantity: item.quantity,
             }
       )

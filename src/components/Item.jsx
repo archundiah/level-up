@@ -18,12 +18,7 @@ const Item = ({ id, title, platform, price, image }) => {
       <CardContent>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Link to={`/item/${id}`}>
-            <img
-              src={`/assets/${image}`}
-              alt='Game caratule'
-              width='auto'
-              height='200px'
-            />
+            <img src={image} alt='Game caratule' width='auto' height='200px' />
           </Link>
         </Box>
         <Box
@@ -36,9 +31,7 @@ const Item = ({ id, title, platform, price, image }) => {
           }}
         >
           <Typography variant='h6'>{title}</Typography>
-          <Typography variant='h7'>
-            {platform} - {price}
-          </Typography>
+          <Typography variant='h7'>${price}</Typography>
         </Box>
       </CardContent>
     </Card>

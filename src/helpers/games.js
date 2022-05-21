@@ -37,7 +37,7 @@ export const temporalGames = [
     price: 50,
     platform: 'PS5',
     image: 'ps5-hfw.jpg',
-    description: 'Hollow Knight es una aventura de acción clásica en 2D ambientada en un vasto mundo interconectado. Explora cavernas tortuosas, ciudades antiguas y páramos mortales. '
+    description: 'Hollow Knight es una aventura de acción clásica en 2D ambientada en un vasto mundo interconectado. Explora cavernas tortuosas, ciudades antiguas y páramos mortales.'
   },
   {
     id: 'xone-md',

@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 import { temporalGames } from '../helpers/games'
 
 import ItemList from './ItemList'
+import { getGamesFromFB } from './../helpers/gamesFB'
 
 const ItemListContainer = () => {
   const { category } = useParams()
@@ -14,24 +15,12 @@ const ItemListContainer = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const getGames = new Promise((resolve) => {
-      setLoading(true)
-      setTimeout(() => {
-        const filteredGames = temporalGames.filter(
-          (game) => game.platform.toLowerCase() === category
-        )
-        setLoading(false)
-        resolve(filteredGames)
-      }, 2000)
-    })
-
-    getGames
-      .then((result) => {
-        setGames(result)
-      })
-      .catch((error) => {
-        console.log('Ha ocurrido un error: ', error)
-      })
+    const getGames = async () => {
+      const gamesFB = await getGamesFromFB(category)
+      setGames(gamesFB)
+      setLoading(false)
+    }
+    getGames()
   }, [category])
   return (
     <>
