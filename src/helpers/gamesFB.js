@@ -21,5 +21,4 @@ export const getGameDetail = async (id) => {
   )
   const snapshot = await getDocs(q)
   return { docId: snapshot.docs[0].id, ...snapshot.docs[0].data() }
-
 }

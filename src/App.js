@@ -29,7 +29,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CartContextProvider>
         <SnackbarContextProvider>
-          <BrowserRouter>
+           <BrowserRouter>
             <NavBar />
             <Box sx={{ marginTop: '5rem', }}>
               <Routes>
