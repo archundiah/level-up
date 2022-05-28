@@ -40,6 +40,7 @@ const Cart = () => {
       phone: formValues.phone,
       cart: cart,
       total: cart.reduce((acc, item) => acc + item.price, 0),
+      date: new Date(),
     }
     setNewOrder(newOrder)
     clearCart()
