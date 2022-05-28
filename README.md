@@ -25,7 +25,7 @@ Es decir, los productos en el archivo `src/helpers/games.js` en futuras versione
 2. La estructura de los archivos se siguió con base en mi experiencia.
 3. Se quitó el StrictMode ya que dispara los useEffect 2 veces.
 4. Se adaptó la sintáxis de algunas sentencias para utilizar la versión más reciente de React. (18)
-5. Se deployeó en vercel en el siguiente link: https://level-up-six.vercel.app/ps5
+5. Se deployeó en vercel en el [https://level-up-six.vercel.app/ps5] siguiente link
 
 ## Consideraciones
 - El style no es el mejor, necesito practica más en eso. (Aunque no es el propósito del proyecto, se trabajará en ello para poder utilizar el proyecto como Portfolio)
