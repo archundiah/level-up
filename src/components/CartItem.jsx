@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 
 const CartItem = ({ game }) => {
-  const navigate = useNavigate()
   const { addToCart, removeOneFromCart, removeFromCart } = useCart()
 
   return (

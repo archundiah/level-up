@@ -70,7 +70,7 @@ const Cart = () => {
       {cart.length > 0 && (
         <>
           <Typography sx={{ marginX: 5, display: 'inline' }}>
-            Total ammount: $
+            Total compra: $
             {cart.reduce((acc, game) => acc + game.price * game.quantity, 0)}
           </Typography>
           <Button
